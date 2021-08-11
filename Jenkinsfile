@@ -32,29 +32,7 @@ pipeline {
         //             junit 'target/surefire-reports/*.xml'
         //         }
         //     }
-        // }
-
-	stage('SSH transfer') {
-		steps{
-		script {
-			sshPublisher(
-			continueOnError: false, failOnError: true,
-			publishers: [
-			sshPublisherDesc(
-			configName: "production-ssh",
-			verbose: true,
-			transfers: [
-			sshTransfer(
-			sourceFiles: "/target/mkyong.war",
-			removePrefix: "target",
-			remoteDirectory: "/usr/share/tomcat/apache-tomcat-8.5.69/webapps"
-			)
-			])
-			])
-		}
-	}
-		}
-		
+        // }		
 	    
     }
 }
