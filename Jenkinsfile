@@ -33,6 +33,11 @@ pipeline {
         //         }
         //     }
         // }		
+	    stage('Copy .war artifact to production machine') {
+		    steps {
+			sh 'scp target/mkyong.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'	    
+		    }
 	    
+	    }	    
     }
 }
