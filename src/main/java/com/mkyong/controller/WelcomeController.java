@@ -16,12 +16,12 @@ public class WelcomeController {
     @Value("${welcome.message}")
     private String message;
 
-    private List<String> tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
+//     private List<String> tasks = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
     
     @GetMapping("/")
     public String main(Model model) {
         model.addAttribute("message", message);
-        model.addAttribute("tasks", tasks);
+//         model.addAttribute("tasks", tasks);
 
         return "welcome"; //view
     }
