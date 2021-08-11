@@ -35,6 +35,7 @@ pipeline {
         // }		
 	    stage('Copy .war artifact to production machine') {
 		    steps {
+			sh 'whoami'
 // 			sh 'scp -v -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/simple-hello-world-war-pipeline/target/mkyong.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'
 			sh 'scp -i /home/vagrant/.ssh/id_rsa /var/lib/jenkins/workspace/simple-hello-world-war-pipeline/target/mkyong.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'
 		    }
