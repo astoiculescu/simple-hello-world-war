@@ -41,7 +41,7 @@ pipeline {
 			continueOnError: false, failOnError: true,
 			publishers: [
 			sshPublisherDesc(
-			configName: "${env.SSH_CONFIG_NAME}",
+			configName: "production-ssh",
 			verbose: true,
 			transfers: [
 			sshTransfer(
