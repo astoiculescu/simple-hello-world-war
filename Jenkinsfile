@@ -8,14 +8,14 @@ pipeline {
     
     stages {
         
-        stage ('Clone') {
-            steps {
-                script{
-                    git url: 'https://github.com/astoiculescu/simple-hello-world-war.git'
-                    sh "ls -lart ./*"
-                } 
-            }
-        }
+//         stage ('Clone') {
+//             steps {
+//                 script{
+//                     git url: 'https://github.com/astoiculescu/simple-hello-world-war.git'
+//                     sh "ls -lart ./*"
+//                 } 
+//             }
+//         }
         
         stage('Build') {
             steps {
