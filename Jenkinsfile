@@ -34,5 +34,24 @@ pipeline {
         //     }
         // }
 
+	stage('SSH transfer') {
+		script {
+			sshPublisher(
+			continueOnError: false, failOnError: true,
+			publishers: [
+			sshPublisherDesc(
+			configName: "${env.SSH_CONFIG_NAME}",
+			verbose: true,
+			transfers: [
+			sshTransfer(
+			sourceFiles: "/target/mkyong.war",
+			removePrefix: "target",
+			remoteDirectory: "/usr/share/tomcat/apache-tomcat-8.5.69/webapps"
+			)
+			])
+			])
+		}
+	}
+	    
     }
 }
