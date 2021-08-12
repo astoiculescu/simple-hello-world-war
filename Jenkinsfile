@@ -27,8 +27,8 @@ pipeline {
 	    stage('Deploy') {
 		    steps {
 // 			sh 'scp -v -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/simple-hello-world-war-pipeline/target/mkyong.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'
-			sh 'scp /var/lib/jenkins/workspace/simple-hello-world-war-pipeline/target/mkyong.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'
-			    sh 'echo ${BUILD_NUMBER}'    
+			    sh 'scp /var/lib/jenkins/workspace/simple-hello-world-war-pipeline/target/mkyong.${BUILD_NUMBER}.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'
+			    sh 'echo "current build number is:" ${BUILD_NUMBER}'    
 		    }
 	    
 	    }	    
