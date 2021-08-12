@@ -40,7 +40,6 @@ pipeline {
                 withDockerRegistry([ credentialsId: "Docker-Hub", url: "" ]){
                     sh 'docker -H ssh://vagrant@192.168.50.52 run -d --name hello_world -p 8888:8080 astoiculescu/simple-hello-world-war'
                 }
-            }
         }
     }
 }
