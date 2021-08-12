@@ -13,12 +13,12 @@ pipeline {
     }
 	
     stage('Build and tag docker image') {
+	    
 	    steps {
 		sh 'cp /var/lib/jenkins/workspace/simple-hello-world-war-pipeline-docker/target/mkyong.war /var/lib/jenkins/docker/'
 		sh 'docker build -t simple-hello-world-war:latest /var/lib/jenkins/docker/.'
 	    sh 'docker tag simple-hello-world-war astoiculescu/simple-hello-world-war:latest'
 	    }
-
     }
 	    
     stage('Publish image to dockerhub') {
@@ -42,5 +42,6 @@ pipeline {
 		}
 
     }
+}
 }
 	
