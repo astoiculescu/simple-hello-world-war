@@ -25,9 +25,8 @@ pipeline {
 
 	    steps {
 		withDockerRegistry([ credentialsId: "Docker-Hub", url: "" ]) {
-		  sh  'docker push astoiculescu/simple-hello-world-war'
-		}
-
+		    sh  'docker push astoiculescu/simple-hello-world-war'
+		    }
 	    }
     }
 	   
@@ -37,10 +36,9 @@ pipeline {
 		sh 'docker -H ssh://vagrant@192.168.50.52 stop hello_world || true'
 		sh 'docker -H ssh://vagrant@192.168.50.52 rm hello_world || true'
 		sh 'docker -H ssh://vagrant@192.168.50.52 rmi astoiculescu/simple-hello-world-war:latest || true'
-		withDockerRegistry([ credentialsId: "Docker-Hub", url: "" ]){
-		    sh 'docker -H ssh://vagrant@192.168.50.52 run -d --name hello_world -p 8888:8080 astoiculescu/simple-hello-world-war'
-		}
-
+            withDockerRegistry([ credentialsId: "Docker-Hub", url: "" ]){
+                sh 'docker -H ssh://vagrant@192.168.50.52 run -d --name hello_world -p 8888:8080 astoiculescu/simple-hello-world-war'
+            }
+        }
     }
 }
-	
