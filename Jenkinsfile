@@ -7,19 +7,10 @@ pipeline {
         }
     
     stages {
-        
-//         stage ('Clone') {
-//             steps {
-//                 script{
-//                     git url: 'https://github.com/astoiculescu/simple-hello-world-war.git'
-//                     sh "ls -lart ./*"
-//                 } 
-//             }
-//         }
-        
+                
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn -B -DskipTests -Dv=${BUILD_NUMBER} clean package'
             }
         }
         // stage('Test') {
@@ -33,7 +24,7 @@ pipeline {
         //         }
         //     }
         // }		
-	    stage('Copy .war artifact to production machine') {
+	    stage('Deploy') {
 		    steps {
 // 			sh 'scp -v -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/simple-hello-world-war-pipeline/target/mkyong.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'
 			sh 'scp /var/lib/jenkins/workspace/simple-hello-world-war-pipeline/target/mkyong.war vagrant@192.168.50.52:/usr/share/tomcat/apache-tomcat-8.5.69/webapps/'
